@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>Developed by Sumran Kumar</li>
+            <li>Contact: ksumran121@gmail.com</li>
+        </ul>
+    </nav>
+
+    <div class="gameContainer">
+        <div class="container">
+            <div class="line"></div>
+            <div class="box bt-0 bl-0" data-index="0"><span class="boxtext" aria-label="Box 1"></span></div>
+            <div class="box bt-0" data-index="1"><span class="boxtext" aria-label="Box 2"></span></div>
+            <div class="box bt-0 br-0" data-index="2"><span class="boxtext" aria-label="Box 3"></span></div>
+            <div class="box bl-0" data-index="3"><span class="boxtext" aria-label="Box 4"></span></div>
+            <div class="box" data-index="4"><span class="boxtext" aria-label="Box 5"></span></div>
+            <div class="box br-0" data-index="5"><span class="boxtext" aria-label="Box 6"></span></div>
+            <div class="box bl-0 bb-0" data-index="6"><span class="boxtext" aria-label="Box 7"></span></div>
+            <div class="box bb-0" data-index="7"><span class="boxtext" aria-label="Box 8"></span></div>
+            <div class="box bb-0 br-0" data-index="8"><span class="boxtext" aria-label="Box 9"></span></div>
+        </div>
+        
+        <div class="gameInfo">
+            <h1>Welcome to Tic-Tac-Toe</h1>
+            
+            <div class="gameModeSelector">
+                <h3>Select Game Mode</h3>
+                <div class="modeButtons">
+                    <button id="mode2Player" class="modeBtn active">2 Players</button>
+                    <button id="modeComputer" class="modeBtn">vs Computer</button>
+                </div>
+                <div id="difficultySelector" class="difficultySelector" style="display: none;">
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="scoreBoard">
+                <div class="score">
+                    <span class="player">Player X</span>
+                    <span class="scoreX">0</span>
+                </div>
+                <div class="score">
+                    <span class="player">Player O</span>
+                    <span class="scoreO">0</span>
+                </div>
+            </div>
+            
+            <div class="gameStatus">
+                <span class="info">Turn for <b id="currentPlayer">X</b></span>
+                <div class="controls">
+                    <button id="reset" aria-label="Reset Game">Reset</button>
+                    <button id="newGame" aria-label="New Game">New Game</button>
+                    <button id="soundToggle" aria-label="Toggle Sound">🔊</button>
+                </div>
+            </div>
+            
+            <div class="imgbox">
+                <img src="excited.gif" alt="Celebration animation" />
+            </div>
+        </div>
+    </div>
+
+          <script src="script.js"></script>
+  </body>
+</html>

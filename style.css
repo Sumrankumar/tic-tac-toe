@@ -1,0 +1,456 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+body li {
+    font-style: italic;
+    font-size: medium;
+}
+
+nav {
+    background: linear-gradient(90deg, #2c3e50, #34495e);
+    color: white;
+    height: 65px;
+    font-size: 27px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-family: 'Roboto', sans-serif;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 50px;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    display: grid;
+    grid-template-columns: repeat(3, 10vw);
+    grid-template-rows: repeat(3, 10vw);
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    gap: 5px;
+}
+
+.line {
+    background: linear-gradient(90deg, #00ff88, #00ccff);
+    border-radius: 3px;
+    height: 6px;
+    width: 0;
+    position: absolute;
+    left: 0;
+    transform: translate(10vw, 20vw) rotate(90deg);
+    transition: all 1s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+.box {
+    border: 2px solid #34495e;
+    border-radius: 10px;
+    font-size: 8vw;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.box:hover {
+    background: rgba(52, 152, 219, 0.2);
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.box:active {
+    transform: scale(0.95);
+}
+
+.box.played {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(155, 89, 182, 0.1));
+    border-color: #3498db;
+}
+
+.box.played:hover {
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(155, 89, 182, 0.2));
+}
+
+.boxtext {
+    transition: all 0.3s ease;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.boxtext:not(:empty) {
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    0% { 
+        transform: scale(0); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: scale(1.2); 
+    }
+    100% { 
+        transform: scale(1); 
+        opacity: 1; 
+    }
+}
+
+/* X and O specific styling */
+.boxtext:contains("X") {
+    color: #e74c3c;
+}
+
+.boxtext:contains("O") {
+    color: #3498db;
+}
+
+.info {
+    font-size: 32px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    display: block;
+    text-align: center;
+}
+
+.gameInfo {
+    padding: 0 34px;
+    font-family: 'Baloo Bhaina 2', cursive;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    min-width: 300px;
+}
+
+.gameInfo h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Game Mode Selector Styles */
+.gameModeSelector {
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.gameModeSelector h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.modeButtons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.modeBtn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Baloo Bhaina 2';
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.modeBtn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.modeBtn.active {
+    background: rgba(255, 255, 255, 0.9);
+    color: #0984e3;
+    border-color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.difficultySelector {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.difficultySelector label {
+    font-weight: bold;
+    color: white;
+}
+
+.difficultySelector select {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #0984e3;
+    font-family: 'Baloo Bhaina 2';
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficultySelector select:hover {
+    background: white;
+    transform: translateY(-1px);
+}
+
+.scoreBoard {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.score {
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.score:hover {
+    transform: scale(1.05);
+}
+
+.player {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.scoreX, .scoreO {
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.gameStatus {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#reset, #newGame, #soundToggle {
+    padding: 10px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-family: 'Baloo Bhaina 2';
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    min-width: 100px;
+}
+
+#reset:hover, #newGame:hover, #soundToggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+#reset:active, #newGame:active, #soundToggle:active {
+    transform: translateY(0);
+}
+
+#soundToggle {
+    font-size: 18px;
+    min-width: 60px;
+}
+
+.imgbox img {
+    width: 0;
+    transition: all 1s ease-in-out;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.br-0 {
+    border-right: 0;
+}
+
+.bl-0 {
+    border-left: 0;
+}
+
+.bt-0 {
+    border-top: 0;
+}
+
+.bb-0 {
+    border-bottom: 0;
+}
+
+/* Loading animation for audio */
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.loading {
+    animation: pulse 1.5s infinite;
+}
+
+/* Responsive design improvements */
+@media screen and (max-width: 950px) {
+    .gameContainer {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .gameInfo {
+        margin-top: 20px;
+        min-width: 280px;
+    }
+    
+    .gameInfo h1 {
+        font-size: 2rem;
+    }
+    
+    .container {
+        grid-template-rows: repeat(3, 20vw);
+        grid-template-columns: repeat(3, 20vw);
+    }
+    
+    .controls {
+        justify-content: center;
+    }
+    
+    .scoreBoard {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .modeButtons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .modeBtn {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        grid-template-rows: repeat(3, 25vw);
+        grid-template-columns: repeat(3, 25vw);
+        gap: 3px;
+        padding: 15px;
+    }
+    
+    .gameInfo {
+        padding: 20px;
+        margin: 0 10px;
+    }
+    
+    .gameInfo h1 {
+        font-size: 1.8rem;
+    }
+    
+    .info {
+        font-size: 24px;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #reset, #newGame, #soundToggle {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .gameModeSelector h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    }
+    
+    .gameInfo {
+        background: rgba(44, 62, 80, 0.95);
+        color: white;
+    }
+    
+    .gameInfo h1 {
+        background: linear-gradient(135deg, #3498db, #9b59b6);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    .info {
+        color: white;
+    }
+}
