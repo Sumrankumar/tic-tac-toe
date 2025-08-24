@@ -207,4 +207,4 @@ This project is open source and available under the MIT License.
 
 ---
 
-**Enjoy playing against the computer! 🤖🎉**
+**Enjoy playing against the computer!**
